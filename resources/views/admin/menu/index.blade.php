@@ -19,7 +19,7 @@
             @forelse ($livros as $livro)
             <tr>
                 <td>{{$livro}}</td>
-                <td class="right-align">Sinopse</td>
+                <td class="right-align"><a href="#">Sinopse</a></td>
             </tr>
 
             @empty
@@ -55,7 +55,7 @@
             @forelse ($vendas as $venda)
             <tr>
                 <td>{{$venda}}</td>
-                <td class="right-align">Sinopse</td>
+                <td class="right-align"><a href="#">Sinopse</a></td>
             </tr>
 
             @empty
