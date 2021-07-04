@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\BookRequest;
+use App\Models\Book;
+
 class MenuController extends Controller
 {
     public function menu()
@@ -12,14 +15,24 @@ class MenuController extends Controller
 
         $subtitulo = 'Lançamentos';
 
-        $livros = ['Sherlock Holmes', 'It - A Coisa', 'Lady Killers', 'Tartarugas Até Lá Embaixo', 'Cemitério Maldito'];
-
-        $subtitulo2 = 'Mais Vendidos';
-
-        $vendas = ['O Que Aconteceu Com Annie', 'Extraordinário', 'O Homem de Giz', 'Crônicas de Gelo e Fogo', 'Carrie a Estranha'];
+        $books = Book::all();
 
 
+        return view('admin.menu.index', compact('subtitulo', 'books'));
+    }
 
-        return view('admin.menu.index', compact('subtitulo', 'livros', 'subtitulo2', 'vendas'));
+    public function formAdd()
+    {
+        return view('admin.menu.form');
+    }
+
+    public function adicionar(BookRequest $request)
+    {
+
+        Book::create($request->all());
+
+        $request->session()->flash('sucesso', "Livro $request->titulo incluído com sucesso!");
+
+        return redirect()->route('admin.menu.listar');
     }
 }
