@@ -22,7 +22,7 @@
             <div class="nav-wrapper">
                 <a href="/" class="brand-logo right">Editora King</a>
                 <ul class="left">
-                    <li><a href="#">Lançamentos</a></li>
+                    <li><a href="{{route('admin.menu.index')}}">Lançamentos</a></li>
                     <li><a href="#">Mais Vendidos</a></li>
                     <li><a href="#">Clube de Assinantes</a></li>
                 </ul>
@@ -44,6 +44,12 @@
         M.toast({html: "{{session('sucesso')}}"});
 
     @endif
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+
 </script>
 </body>
 </html>

@@ -9,5 +9,11 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titulo', 'autor', 'pagina', 'notaleitor'];
+    protected $fillable = ['titulo', 'subtitulo', 'autor', 'genero_id', 'pagina', 'notaleitor', 'sinopse'];
+
+    public function genero()
+    {
+
+        return $this->belongsTo(Genero::class);
+    }
 }

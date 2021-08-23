@@ -19,7 +19,5 @@ Route::redirect('/', '/admin/menu');
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('menu', [MenuController::class, 'menu'])->name('menu.listar');
-    Route::get('menu/add', [MenuController::class, 'formAdd'])->name('menu.form');
-    Route::post('menu/add', [MenuController::class, 'adicionar'])->name('menu.adicionar');
+    Route::resource('menu', MenuController::class);
 });

@@ -16,9 +16,14 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('titulo', 100);
+            $table->string('subtitulo', 100)->nullable();
             $table->string('autor', 100);
             $table->integer('pagina');
             $table->float('notaleitor');
+            $table->text('sinopse');
+
+            $table->foreignId('genero_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }
